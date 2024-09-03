@@ -1,0 +1,35 @@
+*{
+    margin: 0.2rem;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 534px);
+    grid-template-rows: 442px 358px;
+    gap: 20px;
+
+    .statistics{
+            background-color: #f0f0f0;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.16);
+
+    }
+}
+
+.cards {
+   display: grid;
+   grid-template-columns: repeat(2, 252px);
+   grid-template-rows: repeat(2, 205px);
+   gap: 20px;
+
+    .card-body{
+        width: 252px;
+        height: 205px;
+        background-color: #f0f0f0;
+        border-radius: 20px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.16);
+    }
+    
+}
