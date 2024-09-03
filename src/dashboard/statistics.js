@@ -17,7 +17,7 @@ export default function Statistic() {
         type: 'spline'
     };
     return (
-        <div>
+        <div id="statistics">
             <Line data={data} />
         </div >
 
