@@ -7,6 +7,7 @@ import ethGraph from '../assets/dashboard/ethGraph.png'
 import whitebtc from '../assets/dashboard/whitebtc.png'
 // import btcGraph from '../assets/dashboard/btcGraph.png'
 // import itcGraph from '../assets/dashboard/itcGraph.png'
+import dec from '../assets/dashboard/dec.png'
 
 
 export default function Transactions() {
@@ -51,58 +52,10 @@ export default function Transactions() {
                                     <p>Price</p>
                                     <span>{coin.current_price.toFixed(3)}</span>
                                 </td>
-                                <td className="graph"><img src={ethGraph} alt="" /></td>
+                                <td className="graph"><img src={"../assets/dashboard/" + coin.symbol + "Graph.png"} alt="" /></td>
                             </tr>
                         )}
 
-                        {/* <tr>
-                            <td><img className="cryptoLogo" src={whiteBtc} alt="" /></td>
-                            <td >
-                                <h3>Bitcoin </h3>
-                                <span>ETH / USDT</span>
-                            </td>
-                            <td >
-                                <p>Change</p>
-                                <span>+4.02%</span>
-                            </td>
-                            <td >
-                                <p>Price</p>
-                                <span>21,786 USD</span>
-                            </td>
-                            <td className="graph"><img src={btcGraph} alt="" /></td>
-                        </tr>
-                        <tr>
-                            <td><img className="cryptoLogo" src={whiteItc} alt="" /></td>
-                            <td >
-                                <h3>Litecoin </h3>
-                                <span>ITC / USDT</span>
-                            </td>
-                            <td >
-                                <p>Change</p>
-                                <span>-4.02%</span>
-                            </td>
-                            <td >
-                                <p>Price</p>
-                                <span>9,786 USD</span>
-                            </td>
-                            <td className="graph"><img src={itcGraph} alt="" /></td>
-                        </tr>
-                        <tr>
-                            <td><img className="cryptoLogo" src={adawhite} alt="" /></td>
-                            <td >
-                                <h3>Cardano</h3>
-                                <span>ADA / USDT</span>
-                            </td>
-                            <td >
-                                <p>Change</p>
-                                <span>+0.02%</span>
-                            </td>
-                            <td >
-                                <p>Price</p>
-                                <span>4,786 USD</span>
-                            </td>
-                            <td className="graph"><img src={adaGraph} alt="" /></td>
-                        </tr> */}
                     </tbody>
                 </table>
             </div>
@@ -115,50 +68,20 @@ export default function Transactions() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            {/* <td><img className="cryptoLogo" src={whiteEth} alt="" /></td> */}
-                            <td >
-                                <h3>Ethereum</h3>
-                                <span>ETH / USDT</span>
-                            </td>
-                            <td >
-                                <p>Change</p>
-                                <span>+14.02%</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            {/* <td><img className="cryptoLogo" src={whiteEth} alt="" /></td> */}
-                            <td >
-                                <h3>Ethereum</h3>
-                                <span>ETH / USDT</span>
-                            </td>
-                            <td >
-                                <p>Change</p>
-                                <span>+14.02%</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            {/* <td><img className="cryptoLogo" src={whiteEth} alt="" /></td> */}
-                            <td >
-                                <h3>Ethereum</h3>
-                                <span>ETH / USDT</span>
-                            </td>
-                            <td >
-                                <p>Change</p>
-                                <span>+14.02%</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            {/* <td><img className="cryptoLogo" src={whiteEth} alt="" /></td> */}
-                            <td >
-                                <h3>Ethereum</h3>
-                                <span>ETH / USDT</span>
-                            </td>
-                            <td >
-                                <p>Change</p>
-                                <span>+14.02%</span>
-                            </td>
-                        </tr>
+                        {coinList.map((coin) =>
+                            <tr>
+                                <td><img className="cryptoLogo" src={dec} alt="" /></td>
+                                <td >
+                                    <h3>{coin.name}</h3>
+                                    <span>Buy</span>
+                                </td>
+                                <td >
+                                    <p>$25,00</p>
+                                    <span>date</span>
+                                </td>
+                            </tr>
+                        )}
+
                     </tbody>
                 </table>
 
