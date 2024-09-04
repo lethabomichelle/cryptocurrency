@@ -4,6 +4,8 @@ import CryptoCards from './CryptoCards';
 import BTCPriceGraph from './BTCPriceGraph';
 import Transactions from './Transactions';
 import axios from 'axios';
+import './dashboard.css'
+
 
 const Dashboard = () => {
   const [cryptoPrices, setCryptoPrices] = useState([]);
@@ -61,7 +63,10 @@ const Dashboard = () => {
           <CryptoCards prices={cryptoPrices} />
           <BTCPriceGraph data={cryptoPrices} />
         </div>
-        <Transactions />
+        <div className="">
+          <Transactions />
+        </div>
+
       </div>
     </div>
   );

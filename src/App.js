@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
-import Login from './components/Login';
-import Signup from './components/Signup';
+// import Login from './components/Login';
+// import Signup from './components/Signup';
 import './App.css';
-import Dashboard from './dashboard/dashboard';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
@@ -16,24 +15,25 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Route path="/signup">
-          {!isAuthenticated ? <Signup /> : <Redirect to="/dashboard" />}
-        </Route>
-        <Route path="/login">
+        <Dashboard />
+        {/* <Route path="/signup"> */}
+        {/* {!isAuthenticated ? <Signup /> : <Redirect to="/dashboard" />} */}
+        {/* </Route>I */}
+        {/* <Route path="/login">
           {!isAuthenticated ? (
             <Login onLoginSuccess={handleLoginSuccess} />
           ) : (
             <Redirect to="/dashboard" />
           )}
-        </Route>
-        <Route path="/dashboard">
-          {isAuthenticated ? <Dashboard /> : <Redirect to="/login" />}
-        </Route>
-        <Route exact path="/">
-          <Redirect to={isAuthenticated ? '/dashboard' : '/signup'} />
-        </Route>
+        </Route> */}
+        {/* <Route path="/dashboard"> */}
+        {/* {isAuthenticated ? <Dashboard /> : <Redirect to="/login" />} */}
+        {/* </Route>
+        <Route exact path="/"> */}
+        {/* <Redirect to={isAuthenticated ? '/dashboard' : '/signup'} /> */}
+        {/* </Route> */}
       </div>
-    </Router>
+    </Router >
   );
 }
 

@@ -2,9 +2,10 @@ import React from "react";
 import { Line } from 'react-chartjs-2';
 import { CategoryScale } from 'chart.js';
 import Chart from 'chart.js/auto';
+import './dashboard.css'
 Chart.register(CategoryScale);
 
-export default function Statistic() {
+export default function BTCPriceGraph() {
     const data = {
         labels: ['January', 'March', 'May', 'June', 'September', 'November'],
         datasets: [{
