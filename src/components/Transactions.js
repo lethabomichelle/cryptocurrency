@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from "react";
 import './dashboard.css'
 
-// import adawhite from '../assets/dashboard/adawhite.png'
-// import adaGraph from '../assets/dashboard/adaGraph.png'
-import ethGraph from '../assets/dashboard/ethGraph.png'
-import whitebtc from '../assets/dashboard/whitebtc.png'
-// import btcGraph from '../assets/dashboard/btcGraph.png'
-// import itcGraph from '../assets/dashboard/itcGraph.png'
+import inc from '../assets/dashboard/inc.png'
 import dec from '../assets/dashboard/dec.png'
+import whiteAda from '../assets/dashboard/whiteada.png'
+import whiteBtc from '../assets/dashboard/whitebtc.png'
+import whiteEth from '../assets/dashboard/whiteeth.png'
+import whiteLtc from '../assets/dashboard/whiteltc.png'
 
+const images = {
+    'ada': whiteAda,
+    'btc': whiteBtc,
+    'eth': whiteEth,
+    'ltc': whiteLtc
+}
+
+const arrows = {
+    up: inc,
+    down: dec
+}
 
 export default function Transactions() {
     const [coinList, setCoinList] = useState([])
@@ -22,7 +32,7 @@ export default function Transactions() {
         fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd', options)
             .then(async response => {
                 const res = await response.json();
-                console.log('resp', res);
+                // console.log('resp', res);
                 setCoinList(res.filter(coin => ['btc', 'ada', 'ltc', 'eth'].includes(coin.symbol)))
             }).catch(err => console.error(err));
     }, []);
@@ -38,8 +48,8 @@ export default function Transactions() {
                     </thead>
                     <tbody>
                         {coinList.map((coin) =>
-                            <tr>
-                                <td><img className="cryptoLogo" src={`../assets/dashboard/white` + coin.symbol + '.png'} alt="" /></td>
+                            <tr key={coin.id}>
+                                <td><img className="cryptoLogo" src={images[coin.symbol]} alt="" /></td>
                                 <td >
                                     <h3>{coin.name}</h3>
                                     <span>{coin.symbol.toUpperCase()} / USDT</span>
@@ -69,8 +79,8 @@ export default function Transactions() {
                     </thead>
                     <tbody>
                         {coinList.map((coin) =>
-                            <tr>
-                                <td><img className="cryptoLogo" src={dec} alt="" /></td>
+                            <tr key={coin.id}>
+                                <td><img className="cryptoLogo" src={arrows.up} alt="" /></td>
                                 <td >
                                     <h3>{coin.name}</h3>
                                     <span>Buy</span>

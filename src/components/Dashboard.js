@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from './Sidebar';
 import CryptoCards from './CryptoCards';
-import BTCPriceGraph from './BTCPriceGraph';
+// import BTCPriceGraph from './BTCPriceGraph';
+import CoinGeckoChart from './BTCPriceGraph';
 import Transactions from './Transactions';
 import axios from 'axios';
 import './dashboard.css'
@@ -12,16 +13,16 @@ const Dashboard = () => {
   const [user, setUser] = useState(null);
 
   const fetchPrices = async () => {
-    try {
-      const response = await axios.get('http://localhost:5000/api/crypto/prices', {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
-      });
-      setCryptoPrices(response.data);
-    } catch (error) {
-      console.error('Error fetching prices:', error);
-    }
+    // try {
+    //   const response = await axios.get('http://localhost:5000/api/crypto/prices', {
+    //     headers: {
+    //       Authorization: `Bearer ${localStorage.getItem('token')}`,
+    //     },
+    //   });
+    //   setCryptoPrices(response.data);
+    // } catch (error) {
+    //   console.error('Error fetching prices:', error);
+    // }
   };
 
   const handleLogout = () => {
@@ -61,7 +62,7 @@ const Dashboard = () => {
         </div>
         <div className="crypto-overview">
           <CryptoCards prices={cryptoPrices} />
-          <BTCPriceGraph data={cryptoPrices} />
+          <CoinGeckoChart data={cryptoPrices} />
         </div>
         <div className="">
           <Transactions />
