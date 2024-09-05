@@ -6,16 +6,21 @@
 
 body{
     font-family: "Poppins", sans-serif;
+
+    span {
+        color: #9E9E9E;
+        font-weight: 400;
+        font-size: 14px;
+    }
 }
 
 .crypto-overview {
     display: grid !important;
     grid-template-columns: repeat(2, 50%);
     gap: 20px;
-
-    
-
 }
+
+
 
 #statistics{
     background-color: #fff;
@@ -27,17 +32,18 @@ body{
     height: 442px;
 }
 
-.cards {
+.cards{
    display: grid;
    grid-template-columns: repeat(2, 1fr);
    grid-template-rows: repeat(2, 1fr);
    place-content: center;
    gap: 20px;
+   outline: none;
    
 
-    .card-body{
-        width: 200px;
-        height: 160px;
+    button{
+        width: 220px;
+        height: 220px;
         background-color: #fff;
         border-radius: 20px;
         box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.07);
@@ -45,6 +51,8 @@ body{
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        outline: none;
+        border: none;
     }
 
     .card-body h3 {
@@ -66,12 +74,12 @@ body{
         width: 52px;
         height: 52px;
     }
-    
 }
 
 .table{
     height: 352px;
     width: 100%;
+    color: #1A1A1A;
 
     h2 {
         padding: 2px;
@@ -92,6 +100,16 @@ body{
         margin: auto;
         width: 50px;
         height: 50px;
+    }
+
+    h3 {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .tHeading {
+        font-weight: 600;
+        font-size: 21px;
     }
 
 }
@@ -117,5 +135,16 @@ td:has(.cryptoLogo) {
 .transactions{
     width: 100%;
     margin-left: auto;
+}
 
+.green {
+    color: #1ECB4F;
+}
+
+.red {
+    color:#FF8D4D;
+}
+
+.BTCgraph {
+    height: 2rem;
 }

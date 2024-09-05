@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import './dashboard.css'
+import BTCPriceGraph from "./BTCPriceGraph";
 
 import inc from '../assets/dashboard/inc.png'
 import dec from '../assets/dashboard/dec.png'
@@ -37,13 +38,17 @@ export default function Transactions() {
             }).catch(err => console.error(err));
     }, []);
 
+    function format(n) {
+        return n >= 0 ? '+' + n : n;
+    }
+
     return (
         <div className="bottom-container">
             <div className="live-Market">
                 <table className="table">
                     <thead>
                         <tr>
-                            <th scope="col" colSpan={4}><h2>Live Market</h2></th>
+                            <th className="tHeading" scope="col" colSpan={4}><h2>Live Market</h2></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -55,12 +60,12 @@ export default function Transactions() {
                                     <span>{coin.symbol.toUpperCase()} / USDT</span>
                                 </td>
                                 <td >
-                                    <p>Change</p>
-                                    <span>{coin.price_change_percentage_24h}</span>
+                                    <span>Change</span>
+                                    <p className={parseFloat(coin.price_change_percentage_24h) >= 0 ? 'green' : 'red'}>{format(coin.price_change_percentage_24h)}</p>
                                 </td>
                                 <td >
-                                    <p>Price</p>
-                                    <span>{coin.current_price.toFixed(3)}</span>
+                                    <span>Price</span>
+                                    <p>{coin.current_price.toFixed(3)}</p>
                                 </td>
                                 <td className="graph"><img src={"../assets/dashboard/" + coin.symbol + "Graph.png"} alt="" /></td>
                             </tr>
@@ -74,7 +79,7 @@ export default function Transactions() {
                 <table className="table">
                     <thead>
                         <tr>
-                            <th scope="col" colSpan={4}><h2>Transactions</h2></th>
+                            <th className="tHeading" scope="col" colSpan={4}><h2>Transactions</h2></th>
                         </tr>
                     </thead>
                     <tbody>
