@@ -22,6 +22,11 @@ const arrows = {
 
 export default function CryptoCards() {
 
+    // const handleClick = (id) => {
+    //     const url = `https://api.coingecko.com/api/v3/coins/id/market_chart?vs_currency=usd&days=365&interval=daily&precision=3?id=${id}`;
+    //     window.location.href = url;
+    // };
+
     const [coinList, setCoinList] = useState([])
 
     useEffect(() => {
@@ -50,7 +55,7 @@ export default function CryptoCards() {
 
             {coinList.map((coin) =>
                 <div key={coin.id} >
-                    <button className="card-body">
+                    <button className="card-body" >
                         <div>
                             <img src={images[coin.symbol]} alt="icon" style={{ width: '52px', height: '52px' }} />
                             <div>
