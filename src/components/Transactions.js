@@ -54,7 +54,7 @@ export default function Transactions() {
                     <tbody>
                         {coinList.map((coin) =>
                             <tr key={coin.id}>
-                                <td><img className="cryptoLogo" src={images[coin.symbol]} alt="" /></td>
+                                <td><img className="cryptoLogo" src={images[coin.symbol]} alt={coin.symbol} /></td>
                                 <td >
                                     <h3>{coin.name}</h3>
                                     <span>{coin.symbol.toUpperCase()} / USDT</span>
