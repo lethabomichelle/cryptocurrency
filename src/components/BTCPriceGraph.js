@@ -2,35 +2,36 @@ import React, { useEffect, useState } from "react";
 import { Line } from 'react-chartjs-2';
 import { CategoryScale } from 'chart.js';
 import Chart from 'chart.js/auto';
-import './dashboard.css'
+import './dashboard.css';
 
 Chart.register(CategoryScale);
 
-export default function BTCPriceGraph() {
+export default function BTCPriceGraph({ selectedCoin }) {
     const [dates, setDates] = useState([]);
     const [prices, setPrices] = useState([]);
 
     useEffect(() => {
+        if (!selectedCoin) return;
+
         const options = {
             method: 'GET',
             headers: { accept: 'application/json', 'x-cg-demo-api-key': 'CG-tkgkpH5cDfLNJPiwc4c7RgQS' }
         };
 
-        fetch('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=365&interval=daily&precision=3', options)
+        // Fetch price history for the selected coin
+        fetch(`https://api.coingecko.com/api/v3/coins/${selectedCoin}/market_chart?vs_currency=usd&days=365&interval=daily`, options)
             .then(async response => {
                 const res = await response.json();
 
-                // Filter dates to show only one date per month
+                // Filter the dates array to show only one label per month
                 const filteredData = res.prices.reduce((acc, price) => {
                     const date = new Date(price[0]);
-                    const month = date.toLocaleString('en-US', { month: 'short' });
-                    const year = date.getFullYear();
-                    const formattedDate = `${month} ${year}`;
+                    const monthYear = date.toLocaleString('en-US', { month: 'short', year: 'numeric' });
 
-                    // Add to acc if the current month/year doesn't exist in the acc
-                    if (!acc.dates.includes(formattedDate)) {
-                        acc.dates.push(formattedDate);
-                        acc.prices.push(price[1]);
+                    // Add the first occurrence of each month/year to the list
+                    if (!acc.dates.includes(monthYear)) {
+                        acc.dates.push(monthYear);
+                        acc.prices.push(price[1]);  // Corresponding price for the first day of the month
                     }
 
                     return acc;
@@ -40,12 +41,12 @@ export default function BTCPriceGraph() {
                 setPrices(filteredData.prices);
             })
             .catch(err => console.error(err));
-    }, []);
+    }, [selectedCoin]);  // Re-fetch data whenever the selectedCoin changes
 
     const data = {
         labels: dates,
         datasets: [{
-            label: 'BTC Prices',
+            label: `${selectedCoin.toUpperCase()} Prices`,
             data: prices,
             fill: false,
             tension: 0.5,

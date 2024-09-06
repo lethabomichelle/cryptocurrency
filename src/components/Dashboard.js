@@ -1,28 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from './Sidebar';
 import CryptoCards from './CryptoCards';
-// import BTCPriceGraph from './BTCPriceGraph';
-import CoinGeckoChart from './BTCPriceGraph';
+import CoinGeckoChart from './BTCPriceGraph';  // This is the chart component
 import Transactions from './Transactions';
-import axios from 'axios';
-import './dashboard.css'
-
+import './dashboard.css';
 
 const Dashboard = () => {
   const [cryptoPrices, setCryptoPrices] = useState([]);
+  const [selectedCoin, setSelectedCoin] = useState('bitcoin');  // Default to Bitcoin
   const [user, setUser] = useState(null);
 
   const fetchPrices = async () => {
-    // try {
-    //   const response = await axios.get('http://localhost:5000/api/crypto/prices', {
-    //     headers: {
-    //       Authorization: `Bearer ${localStorage.getItem('token')}`,
-    //     },
-    //   });
-    //   setCryptoPrices(response.data);
-    // } catch (error) {
-    //   console.error('Error fetching prices:', error);
-    // }
+    // Here you can fetch crypto prices and set them in state
   };
 
   const handleLogout = () => {
@@ -45,6 +34,10 @@ const Dashboard = () => {
     return () => clearInterval(interval); // Clean up the interval on component unmount
   }, []);
 
+  const handleCoinClick = (coinId) => {
+    setSelectedCoin(coinId);  // Update selected coin when a card is clicked
+  };
+
   return (
     <div className="dashboard">
       <Sidebar />
@@ -61,13 +54,12 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="crypto-overview">
-          <CryptoCards prices={cryptoPrices} />
-          <CoinGeckoChart data={cryptoPrices} />
+          <CryptoCards prices={cryptoPrices} onCoinClick={handleCoinClick} />
+          <CoinGeckoChart selectedCoin={selectedCoin} />  {/* Pass the selected coin */}
         </div>
         <div className="">
           <Transactions />
         </div>
-
       </div>
     </div>
   );
