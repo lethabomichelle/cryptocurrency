@@ -60,7 +60,24 @@
   overflow-y: auto;
 }
 
+.user-info {
+  display: flex;
+  align-items: center;
+}
 
+.user-info span {
+  margin-right: 20px;
+}
+
+.user-info button, .user-info a {
+  background-color: #4c84ff;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 /* Crypto Overview Section */
 .crypto-overview {
