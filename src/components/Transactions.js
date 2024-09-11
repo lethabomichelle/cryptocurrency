@@ -5,8 +5,8 @@ import BTCPriceGraph from "./BTCPriceGraph";
 import inc from '../assets/dashboard/inc.png'
 import dec from '../assets/dashboard/dec.png'
 import whiteAda from '../assets/dashboard/whiteada.png'
-import whiteBtc from '../assets/dashboard/whitebtc.png'
-import whiteEth from '../assets/dashboard/whiteeth.png'
+import whiteBtc from '../assets/dashboard/whiteBtc.png'
+import whiteEth from '../assets/dashboard/whiteEth.png'
 import whiteLtc from '../assets/dashboard/whiteltc.png'
 
 const images = {

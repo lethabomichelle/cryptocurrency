@@ -15,21 +15,23 @@ import cryptxLogo from '../assets/dashboard/Logo.svg';
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <div className="logo">
-        <img src={cryptxLogo} alt="CryptX Logo" />
-      </div>
-      <nav>
-        <ul>
-          <li><img src={homeIcon} alt="Overview" /> Overview</li>
-          <li><img src={chartIcon} alt="Chart" /> Chart</li>
-          <li><img src={transactionsIcon} alt="Transactions" /> Transactions</li>
-          <li><img src={walletIcon} alt="Wallet" /> Wallet</li>
-          <li><img src={inboxIcon} alt="Mail Box" /> Mail Box</li>
-          <li><img src={settingsIcon} alt="Settings" /> Settings</li>
-          <li><img src={logoutIcon} alt="Logout" /> Logout</li>
-        </ul>
-      </nav>
-    </div>
+  <div className="logo">
+    <img src={cryptxLogo} alt="CryptX Logo" />
+    <span className="logo-name">CryptX</span>  {/* Add the name next to the logo */}
+  </div>
+  <nav>
+    <ul>
+      <li><img src={homeIcon} alt="Overview" /> Overview</li>
+      <li><img src={chartIcon} alt="Chart" /> Chart</li>
+      <li><img src={transactionsIcon} alt="Transactions" /> Transactions</li>
+      <li><img src={walletIcon} alt="Wallet" /> Wallet</li>
+      <li><img src={inboxIcon} alt="Mail Box" /> Mail Box</li>
+      <li><img src={settingsIcon} alt="Settings" /> Settings</li>
+      <li><img src={logoutIcon} alt="Logout" /> Logout</li>
+    </ul>
+  </nav>
+</div>
+
   );
 };
 
