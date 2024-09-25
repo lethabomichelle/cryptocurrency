@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { GoogleLogin } from '@react-oauth/google';
+import '../css/styles.css';
 
 const AuthPage = () => {
-  const [isLogin, setIsLogin] = useState(true); 
+  const [isLogin, setIsLogin] = useState(true);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
@@ -27,7 +29,7 @@ const AuthPage = () => {
       const response = await axios.post(url, payload);
       if (isLogin) {
         localStorage.setItem('token', response.data.token);
-        navigate('/cryptx-dashboard');
+        navigate('/Dashboard');
       } else {
         alert('Registration successful! Please login.');
         setIsLogin(true);
@@ -35,6 +37,18 @@ const AuthPage = () => {
     } catch (error) {
       console.error('Authentication Error:', error);
       alert('Authentication failed.');
+    }
+  };
+
+  const handleGoogleResponse = async (response) => {
+    const { credential } = response;
+    try {
+      const response = await axios.post('/api/google-login', { credential });
+      localStorage.setItem('token', response.data.token);
+      navigate('/Dashboard');
+    } catch (error) {
+      console.error('Google Authentication Error:', error);
+      alert('Google Authentication failed.');
     }
   };
 
@@ -96,6 +110,15 @@ const AuthPage = () => {
               </div>
               <div className="group">
                 <input type="submit" className="button" value="Sign In" />
+              </div>
+              <div className="group">
+                <GoogleLogin
+                  onSuccess={handleGoogleResponse}
+                  onError={(error) => {
+                    console.error('Google Login Error:', error);
+                    alert('Google Login failed.');
+                  }}
+                />
               </div>
               <div className="hr"></div>
               <div className="foot-lnk">

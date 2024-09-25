@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from './Sidebar';
-import CryptoCards from './CryptoCards';
-import BTCPriceGraph from './BTCPriceGraph';
-import Transactions from './Transactions';
+//import CryptoCards from './CryptoCards';
+//import BTCPriceGraph from './BTCPriceGraph';
+//import Transactions from './Transactions';
 import axios from 'axios';
 
 const Dashboard = () => {
@@ -58,10 +58,10 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="crypto-overview">
-          <CryptoCards prices={cryptoPrices} />
-          <BTCPriceGraph data={cryptoPrices} />
+         {/*<CryptoCards prices={cryptoPrices} />
+         <BTCPriceGraph data={cryptoPrices} />*/}
         </div>
-        <Transactions />
+       {/*} <Transactions />*/}
       </div>
     </div>
   );
