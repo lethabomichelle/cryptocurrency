@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
-// import Login from './components/Login';
-// import Signup from './components/Signup';
+import AuthPage from './components/AuthPage';
 import './App.css';
 
 function App() {
@@ -15,26 +14,24 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Dashboard />
-        {/* <Route path="/signup"> */}
-        {/* {!isAuthenticated ? <Signup /> : <Redirect to="/dashboard" />} */}
-        {/* </Route>I */}
-        {/* <Route path="/login">
-          {!isAuthenticated ? (
-            <Login onLoginSuccess={handleLoginSuccess} />
-          ) : (
-            <Redirect to="/dashboard" />
-          )}
-        </Route> */}
-        {/* <Route path="/dashboard"> */}
-        {/* {isAuthenticated ? <Dashboard /> : <Redirect to="/login" />} */}
-        {/* </Route>
-        <Route exact path="/"> */}
-        {/* <Redirect to={isAuthenticated ? '/dashboard' : '/signup'} /> */}
-        {/* </Route> */}
+        <Routes>
+          <Route
+            path="/auth"
+            element={!isAuthenticated ? <AuthPage onLoginSuccess={handleLoginSuccess} /> : <Navigate to="/dashboard" />}
+          />
+          <Route
+            path="/dashboard"
+            element={isAuthenticated ? <Dashboard /> : <Navigate to="/auth" />}
+          />
+          <Route
+            path="/"
+            element={<Navigate to={isAuthenticated ? '/dashboard' : '/auth'} />}
+          />
+        </Routes>
       </div>
     </Router >
   );
 }
 
 export default App;
+
