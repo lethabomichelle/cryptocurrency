@@ -20,7 +20,7 @@ const AuthPage = () => {
       return;
     }
 
-    const url = isLogin ? '/api/login' : '/api/register';
+    const url = isLogin ? '/api/auth/login' : '/api/auth/register';
     const payload = isLogin
       ? { username, password }
       : { username, password, email };
@@ -40,10 +40,10 @@ const AuthPage = () => {
     }
   };
 
-  const handleGoogleResponse = async (response) => {
-    const { credential } = response;
+  const handleGoogleResponse = async (credentialResponse) => {
+    const { credential } = credentialResponse;
     try {
-      const response = await axios.post('/api/google-login', { credential });
+      const response = await axios.post('/api/auth/google', { credential });
       localStorage.setItem('token', response.data.token);
       navigate('/Dashboard');
     } catch (error) {
