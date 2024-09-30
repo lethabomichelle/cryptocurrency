@@ -5,15 +5,26 @@ import BTCPriceGraph from "./BTCPriceGraph";
 import inc from '../assets/dashboard/inc.png'
 import dec from '../assets/dashboard/dec.png'
 import whiteAda from '../assets/dashboard/whiteada.png'
-import whiteBtc from '../assets/dashboard/whiteBtc.png'
+import whitebtc from '../assets/dashboard/whitebtc.png'
 import whiteEth from '../assets/dashboard/whiteEth.png'
 import whiteLtc from '../assets/dashboard/whiteltc.png'
+import adaGraph from '../assets/dashboard/adaGraph.png'
+import btcGraph from '../assets/dashboard/btcGraph.png'
+import ethGraph from '../assets/dashboard/ethGraph.png'
+import itcGraph from '../assets/dashboard/ltcGraph.png'
 
 const images = {
     'ada': whiteAda,
-    'btc': whiteBtc,
+    'btc': whitebtc,
     'eth': whiteEth,
     'ltc': whiteLtc
+}
+
+const graphs = {
+    'ada': adaGraph,
+    'btc': btcGraph,
+    'eth': ethGraph,
+    'ltc': itcGraph
 }
 
 const arrows = {
@@ -42,6 +53,7 @@ export default function Transactions() {
         return n >= 0 ? '+' + n : n;
     }
 
+
     return (
         <div className="bottom-container">
             <div className="live-Market">
@@ -67,7 +79,7 @@ export default function Transactions() {
                                     <span>Price</span>
                                     <p>{coin.current_price.toFixed(3)}</p>
                                 </td>
-                                <td className="graph"><img src={"../assets/dashboard/" + coin.symbol + "Graph.png"} alt="" /></td>
+                                <td className="graph"><img src={graphs[coin.symbol]} alt="" /></td>
                             </tr>
                         )}
 

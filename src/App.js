@@ -15,18 +15,19 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route
+          <Route path="/" element={<Dashboard />} />
+          {/* <Route
             path="/auth"
             element={!isAuthenticated ? <AuthPage onLoginSuccess={handleLoginSuccess} /> : <Navigate to="/dashboard" />}
-          />
-          <Route
+          /> */}
+          {/* <Route
             path="/dashboard"
             element={isAuthenticated ? <Dashboard /> : <Navigate to="/auth" />}
-          />
-          <Route
+          /> */}
+          {/* <Route
             path="/"
             element={<Navigate to={isAuthenticated ? '/dashboard' : '/auth'} />}
-          />
+          /> */}
         </Routes>
       </div>
     </Router >
