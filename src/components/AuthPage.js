@@ -20,7 +20,7 @@ const AuthPage = () => {
       return;
     }
 
-    const url = isLogin ? '/api/auth/login' : '/api/auth/register';
+    const url = isLogin ? 'http://localhost:5001/api/auth/login' : 'http://localhost:5001/api/auth/register';
     const payload = isLogin
       ? { username, password }
       : { username, password, email };
@@ -29,7 +29,7 @@ const AuthPage = () => {
       const response = await axios.post(url, payload);
       if (isLogin) {
         localStorage.setItem('token', response.data.token);
-        navigate('/Dashboard');
+        navigate('/Dashboard'); // Redirect to Dashboard after successful login
       } else {
         alert('Registration successful! Please login.');
         setIsLogin(true);
@@ -43,9 +43,9 @@ const AuthPage = () => {
   const handleGoogleResponse = async (credentialResponse) => {
     const { credential } = credentialResponse;
     try {
-      const response = await axios.post('/api/auth/google', { credential });
+      const response = await axios.post('http://localhost:5001/api/auth/google', { credential });
       localStorage.setItem('token', response.data.token);
-      navigate('/Dashboard');
+      navigate('/Dashboard'); // Redirect to Dashboard after successful Google login
     } catch (error) {
       console.error('Google Authentication Error:', error);
       alert('Google Authentication failed.');
@@ -183,3 +183,4 @@ const AuthPage = () => {
 };
 
 export default AuthPage;
+
