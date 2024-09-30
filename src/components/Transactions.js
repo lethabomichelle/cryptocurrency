@@ -95,18 +95,23 @@ export default function Transactions() {
                         </tr>
                     </thead>
                     <tbody>
-                        {coinList.map((coin) =>
-                            <tr key={coin.id}>
-                                <td><img className="cryptoLogo" src={arrows.up} alt="" /></td>
+                        {coinList.map((coin) => {
+                            const type = Math.random() < 0.5 ? 'Buy' : 'Received';
+                            const img = type === 'Received' ? arrows.up : arrows.down;
+                            const price = Math.random() * 5_000;
+
+                            return (<tr key={coin.id}>
+                                <td><img className="cryptoLogo" src={img} alt="" /></td>
                                 <td >
                                     <h3>{coin.name}</h3>
-                                    <span>Buy</span>
+                                    <span>{type}</span>
                                 </td>
                                 <td >
-                                    <p>$25,00</p>
-                                    <span>date</span>
+                                    <p>${price.toFixed(2)}</p>
+                                    <span>{new Date().toDateString()}</span>
                                 </td>
-                            </tr>
+                            </tr>)
+                        }
                         )}
 
                     </tbody>
