@@ -15,6 +15,11 @@ const AuthPage = () => {
   const handleAuth = async (e) => {
     e.preventDefault();
 
+    if (!username || !password || (!isLogin && !email)) {
+      alert('All fields are required!');
+      return;
+    }
+
     if (!isLogin && password !== repeatPassword) {
       alert("Passwords don't match!");
       return;
@@ -35,7 +40,7 @@ const AuthPage = () => {
         setIsLogin(true);
       }
     } catch (error) {
-      console.error('Authentication Error:', error);
+      console.error('Authentication Error:', error.response?.data || error.message);
       alert('Authentication failed. Please check your credentials or server status.');
     }
   };
@@ -47,7 +52,7 @@ const AuthPage = () => {
       localStorage.setItem('token', response.data.token);
       navigate('/Dashboard');
     } catch (error) {
-      console.error('Google Authentication Error:', error);
+      console.error('Google Authentication Error:', error.response?.data || error.message);
       alert('Google Authentication failed. Please try again.');
     }
   };
@@ -189,5 +194,3 @@ const AuthPage = () => {
 };
 
 export default AuthPage;
-
-
