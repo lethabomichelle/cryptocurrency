@@ -29,14 +29,14 @@ const AuthPage = () => {
       const response = await axios.post(url, payload);
       if (isLogin) {
         localStorage.setItem('token', response.data.token);
-        navigate('/Dashboard'); // Redirect to Dashboard after successful login
+        navigate('/Dashboard');
       } else {
         alert('Registration successful! Please login.');
         setIsLogin(true);
       }
     } catch (error) {
       console.error('Authentication Error:', error);
-      alert('Authentication failed.');
+      alert('Authentication failed. Please check your credentials or server status.');
     }
   };
 
@@ -45,10 +45,10 @@ const AuthPage = () => {
     try {
       const response = await axios.post('http://localhost:5001/api/auth/google', { credential });
       localStorage.setItem('token', response.data.token);
-      navigate('/Dashboard'); // Redirect to Dashboard after successful Google login
+      navigate('/Dashboard');
     } catch (error) {
       console.error('Google Authentication Error:', error);
-      alert('Google Authentication failed.');
+      alert('Google Authentication failed. Please try again.');
     }
   };
 
@@ -85,6 +85,7 @@ const AuthPage = () => {
                   className="input"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
+                  required
                 />
               </div>
               <div className="group">
@@ -95,6 +96,7 @@ const AuthPage = () => {
                   className="input"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </div>
               <div className="group">
@@ -116,7 +118,7 @@ const AuthPage = () => {
                   onSuccess={handleGoogleResponse}
                   onError={(error) => {
                     console.error('Google Login Error:', error);
-                    alert('Google Login failed.');
+                    alert('Google Login failed. Please try again.');
                   }}
                 />
               </div>
@@ -135,6 +137,7 @@ const AuthPage = () => {
                   className="input"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
+                  required
                 />
               </div>
               <div className="group">
@@ -145,6 +148,7 @@ const AuthPage = () => {
                   className="input"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </div>
               <div className="group">
@@ -155,16 +159,18 @@ const AuthPage = () => {
                   className="input"
                   value={repeatPassword}
                   onChange={(e) => setRepeatPassword(e.target.value)}
+                  required
                 />
               </div>
               <div className="group">
                 <label htmlFor="email" className="label">Email Address</label>
                 <input
                   id="email"
-                  type="text"
+                  type="email"
                   className="input"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  required
                 />
               </div>
               <div className="group">
@@ -183,4 +189,5 @@ const AuthPage = () => {
 };
 
 export default AuthPage;
+
 
