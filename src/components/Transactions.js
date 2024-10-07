@@ -5,7 +5,7 @@ import BTCPriceGraph from "./BTCPriceGraph";
 import inc from '../assets/dashboard/inc.png'
 import dec from '../assets/dashboard/dec.png'
 import whiteAda from '../assets/dashboard/whiteada.png'
-import whitebtc from '../assets/dashboard/whitebtc.png'
+import whitebtc from '../assets/dashboard/whiteBtc.png'
 import whiteEth from '../assets/dashboard/whiteEth.png'
 import whiteLtc from '../assets/dashboard/whiteltc.png'
 import adaGraph from '../assets/dashboard/adaGraph.png'
