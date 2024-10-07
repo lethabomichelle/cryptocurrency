@@ -5,15 +5,26 @@ import BTCPriceGraph from "./BTCPriceGraph";
 import inc from '../assets/dashboard/inc.png'
 import dec from '../assets/dashboard/dec.png'
 import whiteAda from '../assets/dashboard/whiteada.png'
-import whiteBtc from '../assets/dashboard/whiteBtc.png'
+import whitebtc from '../assets/dashboard/whiteBtc.png'
 import whiteEth from '../assets/dashboard/whiteEth.png'
 import whiteLtc from '../assets/dashboard/whiteltc.png'
+import adaGraph from '../assets/dashboard/adaGraph.png'
+import btcGraph from '../assets/dashboard/btcGraph.png'
+import ethGraph from '../assets/dashboard/ethGraph.png'
+import itcGraph from '../assets/dashboard/ltcGraph.png'
 
 const images = {
     'ada': whiteAda,
-    'btc': whiteBtc,
+    'btc': whitebtc,
     'eth': whiteEth,
     'ltc': whiteLtc
+}
+
+const graphs = {
+    'ada': adaGraph,
+    'btc': btcGraph,
+    'eth': ethGraph,
+    'ltc': itcGraph
 }
 
 const arrows = {
@@ -42,6 +53,7 @@ export default function Transactions() {
         return n >= 0 ? '+' + n : n;
     }
 
+
     return (
         <div className="bottom-container">
             <div className="live-Market">
@@ -54,7 +66,7 @@ export default function Transactions() {
                     <tbody>
                         {coinList.map((coin) =>
                             <tr key={coin.id}>
-                                <td><img className="cryptoLogo" src={images[coin.symbol]} alt="" /></td>
+                                <td><img className="cryptoLogo" src={images[coin.symbol]} alt={coin.symbol} /></td>
                                 <td >
                                     <h3>{coin.name}</h3>
                                     <span>{coin.symbol.toUpperCase()} / USDT</span>
@@ -67,7 +79,7 @@ export default function Transactions() {
                                     <span>Price</span>
                                     <p>{coin.current_price.toFixed(3)}</p>
                                 </td>
-                                <td className="graph"><img src={"../assets/dashboard/" + coin.symbol + "Graph.png"} alt="" /></td>
+                                <td className="graph"><img src={graphs[coin.symbol]} alt="" /></td>
                             </tr>
                         )}
 
@@ -83,18 +95,23 @@ export default function Transactions() {
                         </tr>
                     </thead>
                     <tbody>
-                        {coinList.map((coin) =>
-                            <tr key={coin.id}>
-                                <td><img className="cryptoLogo" src={arrows.up} alt="" /></td>
+                        {coinList.map((coin) => {
+                            const type = Math.random() < 0.5 ? 'Buy' : 'Received';
+                            const img = type === 'Received' ? arrows.up : arrows.down;
+                            const price = Math.random() * 5_000;
+
+                            return (<tr key={coin.id}>
+                                <td><img className="cryptoLogo" src={img} alt="" /></td>
                                 <td >
                                     <h3>{coin.name}</h3>
-                                    <span>Buy</span>
+                                    <span>{type}</span>
                                 </td>
                                 <td >
-                                    <p>$25,00</p>
-                                    <span>date</span>
+                                    <p>${price.toFixed(2)}</p>
+                                    <span>{new Date().toDateString()}</span>
                                 </td>
-                            </tr>
+                            </tr>)
+                        }
                         )}
 
                     </tbody>

@@ -68,7 +68,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        
+
         {/* Crypto Overview and Transactions */}
         <div className="crypto-overview">
           <CryptoCards prices={cryptoPrices} onCoinClick={handleCoinClick} />
