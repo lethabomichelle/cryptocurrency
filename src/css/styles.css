@@ -34,7 +34,7 @@ body {
     max-width: 525px;
     min-height: 670px;
     position: relative;
-    background-color: #c8c8c8;
+    background-color: white;
     background-size: cover;
     box-shadow: 0 12px 15px rgba(0, 0, 0, 0.24), 0 17px 50px rgba(0, 0, 0, 0.19);
   }
@@ -60,8 +60,8 @@ body {
   
   .login-html .sign-in:checked + .tab,
   .login-html .sign-up:checked + .tab {
-    color: #fff;
-    border-color: #1161ee;
+    color: black;
+    border-color: plum;
   }
   
   .login-html .sign-in-htm,
@@ -99,7 +99,7 @@ body {
   .group .input,
   .group .button {
     width: 100%;
-    color: #fff;
+    color: gray;
     display: block;
   }
   
@@ -121,13 +121,13 @@ body {
   }
   
   .group .button {
-    background: #1161ee;
+    background: plum;
     cursor: pointer;
     transition: background 0.3s ease;
   }
   
   .group .button:hover {
-    background: #1454c4;
+    background: white;
   }
   
   .group .check {
@@ -148,7 +148,7 @@ body {
     content: "";
     width: 10px;
     height: 2px;
-    background: #fff;
+    background: black;
     position: absolute;
     transition: all 0.2s ease-in-out;
   }
@@ -166,7 +166,7 @@ body {
   }
   
   .group .check:checked + label .icon {
-    background: #1161ee;
+    background: plum;
   }
   
   .group .check:checked + label .icon::before {
